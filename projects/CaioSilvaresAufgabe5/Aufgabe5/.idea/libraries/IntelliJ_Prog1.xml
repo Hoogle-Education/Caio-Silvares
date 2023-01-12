@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="IntelliJ.Prog1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../IntelliJ.Prog1.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../IntelliJ.Prog1.zip!/Prog1/src/main/java" />
+    </SOURCES>
+  </library>
+</component>

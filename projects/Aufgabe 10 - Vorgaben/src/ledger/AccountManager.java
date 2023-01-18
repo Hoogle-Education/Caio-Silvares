@@ -1,6 +1,9 @@
 package ledger;
 
+import exceptions.AccountNotFoundException;
+
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.Random;
 
 public class AccountManager {
@@ -14,16 +17,32 @@ public class AccountManager {
 	 */
 	private static final int ERRORRATIO = 10;
 	
-	public static Account getAccount(String name){
-		return null;
+	public static Account getAccount(String name) throws AccountNotFoundException {
+		try {
+			return getAsset(name);
+		} catch (AccountNotFoundException notFoundException1) {
+			return getLiability(name);
+		}
 	}
 	
-	public static Account getAsset(String name) {
-		return null;
+	public static Account getAsset(String name) throws AccountNotFoundException {
+		String errorMsg = "Cannot found account with name: " + name;
+
+		return assets
+				.stream()
+				.filter(a -> a.getName().equals(name))
+				.findFirst()
+				.orElseThrow(() -> new AccountNotFoundException(errorMsg));
 	}
 	
-	public static Account getLiability(String name) {
-		return null;
+	public static Account getLiability(String name) throws AccountNotFoundException {
+		String errorMsg = "Cannot found account with name: " + name;
+
+		return liabilities
+				.stream()
+				.filter(l -> l.getName().equals(name))
+				.findFirst()
+				.orElseThrow(() -> new AccountNotFoundException(errorMsg));
 	}	
 	
 	/**

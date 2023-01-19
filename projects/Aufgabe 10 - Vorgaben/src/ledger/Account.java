@@ -1,5 +1,8 @@
 package ledger;
 
+import exceptions.AccountClosedException;
+import exceptions.AmountInsufficientException;
+
 public abstract class Account {
 	
 	private String name;	
@@ -11,9 +14,11 @@ public abstract class Account {
 		this.name = name;
 	}
 	
-	public abstract void credit(int value);
+	public abstract void credit(int value)
+			throws AmountInsufficientException, AccountClosedException;
 	
-	public abstract void debit(int value);
+	public abstract void debit (int value)
+			throws AmountInsufficientException, AccountClosedException;
 	
 	public void open() {
 		this.open = true;

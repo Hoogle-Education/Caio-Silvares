@@ -17,7 +17,8 @@ public class Main {
 			String entry = AccountManager.getRandomJournalEntry(6);
 			System.out.println(entry);
 			accountant.postEntry(entry);
-		}	
+		}
+
 		AccountManager.printAccounts();
 	}
 

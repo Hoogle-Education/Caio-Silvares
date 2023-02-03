@@ -1,0 +1,133 @@
+Welcome to the PROG1 trading system!
+Please, enter your authentication key:483161
+Please, enter one of the following commands:
+0 login
+1 register user
+2 unblock user
+3 delete user
+4 to exit.
+1
+Creating a new user...
+Please, enter your username:John
+Please, enter your security number:42
+Answer: Authentication ok; User John registered
+Please, enter one of the following commands:
+0 login
+1 register user
+2 unblock user
+3 delete user
+4 to exit.
+0
+Username:John
+Security number:42
+
+  No|Name      | Inventory|       Buy|      Sell|
+----|----------|----------|----------|----------|
+ [1]|     Amber|         0|         9|         8|
+ [2]|    Bronze|         0|        10|         9|
+ [3]|    Coffee|         0|        10|         9|
+ [4]|   Diamond|         0|        10|         9|
+ [5]|   Emerald|         1|        10|         9|
+ [6]|      Gold|         0|         9|         8|
+ [7]|     Ivory|         0|         9|         8|
+ [8]|   Jewelry|         0|        10|         9|
+ [9]|   Leather|         0|         8|         7|
+[10]|    Marble|        17|        10|         9|
+[11]|    Pepper|         0|        10|         9|
+[12]|   Saffron|         0|        10|         9|
+[13]|       Tea|         0|        10|         9|
+[14]|    Velvet|         0|        10|         9|
+
+Credits:        100
+
+Please, enter one of the following commands:
+0 {number} to buy given item
+1 {number} to sell given item
+2 go back to main menu.
+0 9
+Item Leather bought for 8
+
+  No|Name      | Inventory|       Buy|      Sell|
+----|----------|----------|----------|----------|
+ [1]|     Amber|         0|         9|         8|
+ [2]|    Bronze|         0|        10|         9|
+ [3]|    Coffee|         0|        10|         9|
+ [4]|   Diamond|         0|        10|         9|
+ [5]|   Emerald|         1|        10|         9|
+ [6]|      Gold|         0|         9|         8|
+ [7]|     Ivory|         0|         9|         8|
+ [8]|   Jewelry|         0|        10|         9|
+ [9]|   Leather|         1|         8|         7|
+[10]|    Marble|        17|        10|         9|
+[11]|    Pepper|         0|        10|         9|
+[12]|   Saffron|         0|        10|         9|
+[13]|       Tea|         0|        10|         9|
+[14]|    Velvet|         0|        10|         9|
+
+Credits:         92
+
+Please, enter one of the following commands:
+0 {number} to buy given item
+1 {number} to sell given item
+2 go back to main menu.
+1 10
+Item Marble sold for 9
+
+  No|Name      | Inventory|       Buy|      Sell|
+----|----------|----------|----------|----------|
+ [1]|     Amber|         0|         9|         8|
+ [2]|    Bronze|         0|        10|         9|
+ [3]|    Coffee|         0|        10|         9|
+ [4]|   Diamond|         0|        10|         9|
+ [5]|   Emerald|         1|        10|         9|
+ [6]|      Gold|         0|         9|         8|
+ [7]|     Ivory|         0|         9|         8|
+ [8]|   Jewelry|         0|        10|         9|
+ [9]|   Leather|         1|         8|         7|
+[10]|    Marble|        16|        10|         9|
+[11]|    Pepper|         0|        10|         9|
+[12]|   Saffron|         0|        10|         9|
+[13]|       Tea|         0|        10|         9|
+[14]|    Velvet|         0|        10|         9|
+
+Credits:        101
+
+Please, enter one of the following commands:
+0 {number} to buy given item
+1 {number} to sell given item
+2 go back to main menu.
+1 14
+Invalid request, nothing to sell: 7 John 42 14
+
+  No|Name      | Inventory|       Buy|      Sell|
+----|----------|----------|----------|----------|
+ [1]|     Amber|         0|         9|         8|
+ [2]|    Bronze|         0|        10|         9|
+ [3]|    Coffee|         0|        10|         9|
+ [4]|   Diamond|         0|        10|         9|
+ [5]|   Emerald|         1|        10|         9|
+ [6]|      Gold|         0|         9|         8|
+ [7]|     Ivory|         0|         9|         8|
+ [8]|   Jewelry|         0|        10|         9|
+ [9]|   Leather|         1|         8|         7|
+[10]|    Marble|        16|        10|         9|
+[11]|    Pepper|         0|        10|         9|
+[12]|   Saffron|         0|        10|         9|
+[13]|       Tea|         0|        10|         9|
+[14]|    Velvet|         0|        10|         9|
+
+Credits:        101
+
+Please, enter one of the following commands:
+0 {number} to buy given item
+1 {number} to sell given item
+2 go back to main menu.
+2
+Please, enter one of the following commands:
+0 login
+1 register user
+2 unblock user
+3 delete user
+4 to exit.
+4
+Byebye!

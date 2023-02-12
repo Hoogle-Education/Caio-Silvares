@@ -1,62 +1,73 @@
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
-import java.net.UnknownHostException;
+import java.net.SocketException;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
-public class Main {
-    public static void main(String[] args) {
-        try (Socket socket = new Socket("vm3.mcc.tu-berlin.de", 8080)) {
-            OutputStream writter = socket.getOutputStream();
-            InputStream reader = socket.getInputStream();
-            var authKey = "483161".getBytes();
-            var command = "3".getBytes();
-            var endOfCommand = new byte[] {-1};
-
-            writter.write(authKey);
-            writter.write(endOfCommand);
 //            0 {name} {sec_nr}
 //            0 John 42
 //            Unblock: Unblocks a given user.
 //
-//            1 1 {name} {sec_nr}
+//            1 {name} {sec_nr}
 //            1 John 42
 //            Delete: Deletes a given user.
 //
-//            2 2 {name} {sec_nr}
+//            2 {name} {sec_nr}
 //            2 John 42
 //            GetSalePrices: Gets the current sale prices.
 //
-//            3 3
 //            3
-//            GetPurchasePrices: Gets the current purchase prices
-//            prices.
+//            GetPurchasePrices: Gets the current purchase prices.
 
+public class Main {
 
+    private static final String  AUTHENTICATION_KEY = "483161";
 
-            var responseBytes = reader.read();
-            StringBuilder response = new StringBuilder();
-            while(responseBytes != -1) {
-                response.append((char) responseBytes);
-                responseBytes = reader.read();
+    public static void sendToServer(String... messages) {
+        List<String> messageList = null;
+
+        try {
+            Socket socket = new Socket("vm3.mcc.tu-berlin.de", 8080);
+            OutputStream writer = socket.getOutputStream();
+            InputStream reader = socket.getInputStream();
+            messageList = new ArrayList<>(Arrays.asList(messages));
+
+            for(var msg : messages) {
+                var convertedMsg = msg.getBytes(StandardCharsets.UTF_8);
+                byte endOfCommand = -1;
+                System.out.println(msg + " : sending...");
+
+                writer.write(convertedMsg);
+                writer.write(endOfCommand);
+
+                messageList.remove(0);
+
+                // Lê a resposta do servidor
+                byte[] responseBytes = new byte[20];
+                int length = reader.read(responseBytes);
+                String response = new String(responseBytes, 0, length, StandardCharsets.UTF_8).trim();
+                System.out.println(response);
             }
-            System.out.println(response);
 
-            writter.write(command);
-            writter.write(endOfCommand);
-
-            responseBytes = reader.read();
-            response = new StringBuilder();
-            while(responseBytes != -1) {
-                response.append((char) responseBytes);
-                responseBytes = reader.read();
-            }
-            System.out.println("bytes: " + responseBytes);
-            System.out.println("Command Reponse: " + response);
-        } catch (UnknownHostException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (SocketException socketException) {
+            System.out.println("trying to send again...");
+            sendToServer(messageList.get(0));
+        } catch (Exception e) {
+            System.out.println("Error! Exception : " + e);
             e.printStackTrace();
         }
+
+    }
+
+    public static void main(String[] args) {
+
+        sendToServer(AUTHENTICATION_KEY, "0 Lucas 423");
+
+        //            var command = "0 Lucas 423".getBytes();
+        //            var endOfCommand = new byte[] {-1};
+
     }
 }

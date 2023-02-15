@@ -14,7 +14,10 @@ package model;
 
 import model.enums.Role;
 
-public class Employee {
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+
+public abstract class Employee {
 
     // atributos
     private String name;
@@ -26,7 +29,7 @@ public class Employee {
     private boolean active;
 
     // constructors
-    public Employee(String name, int age, Role role) {
+    private Employee(String name, int age, Role role) {
         this.name = name;
         this.age = age;
         this.active = true;
@@ -75,25 +78,33 @@ public class Employee {
         return active;
     }
 
-    // methods
-    public void upgrade() {
-        switch (role) {
-            case SERVICE -> role = Role.MANAGER;
-            case MANAGER -> role = Role.ADMIN;
-        }
-        updateSalaryAndFee();
+    public Role getRole() {
+        return role;
     }
+
+    protected void setRole(Role role) {
+        this.role = role;
+    }
+
+    // methods
+    protected abstract Consumer<Employee> upgrade();
+
+    public void upgrade(Employee employee) {
+        upgrade().accept(employee);
+        employee.updateSalaryAndFee();
+    }
+
     private void updateSalaryAndFee() {
         switch (role) {
-            case ADMIN -> {
+            case MANAGER -> {
                 baseSalary = 10000;
                 fee = 2.000;
             }
-            case MANAGER -> {
+            case SERVICE -> {
                 baseSalary = 6000;
                 fee = 1500;
             }
-            case SERVICE -> {
+            case BASIC -> {
                 baseSalary = 3000;
                 fee = 500;
             }

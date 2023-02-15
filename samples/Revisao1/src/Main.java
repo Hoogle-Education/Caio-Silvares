@@ -1,16 +1,41 @@
+import model.BasicEmployee;
 import model.Employee;
+import model.ManagerEmployee;
+import model.ServiceEmployee;
 import model.enums.Role;
+import util.MinhaLista;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.BiFunction;
 
 public class Main {
     public static void main(String[] args) {
 
-        Employee emp1 = new Employee("John", "JJ", 25, Role.SERVICE);
+//        MinhaLista lista = new MinhaLista();
+//        lista.add(1);
+//        lista.add(2);
+//        lista.add(3);
+//        lista.iterate();
+
+        Employee emp1 = new BasicEmployee("pedro", "pedro", 25);
+        Employee emp2 = new ServiceEmployee("lucas", "pedro", 25);
+        Employee emp3 = new ManagerEmployee("beatriz", "pedro", 25);
+
+        tryGivePromotion(emp2, emp3);
+        tryGivePromotion(emp2, emp1);
 
         System.out.println(emp1);
-        emp1.upgrade();
-        System.out.println(emp1);
+        System.out.println(emp2);
+        System.out.println(emp3);
 
-        System.out.println("Name: " + emp1.getName());
+    }
 
+    private static void tryGivePromotion(Employee toPromote, Employee toBePromoted) {
+        try {
+            toPromote.upgrade(toBePromoted);
+        } catch (Exception exception) {
+            System.err.println(exception);
+        }
     }
 }

@@ -2,12 +2,7 @@ import model.BasicEmployee;
 import model.Employee;
 import model.ManagerEmployee;
 import model.ServiceEmployee;
-import model.enums.Role;
-import util.MinhaLista;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.BiFunction;
 
 public class Main {
     public static void main(String[] args) {

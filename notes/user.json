@@ -1,0 +1,25 @@
+{
+  "name": "Caio",
+  "username": "caio123",
+  "playlists": [
+    {
+      "name": "mood 1",
+      "musics": [
+        {
+          "name": "If ain't got you",
+          "playlists": [
+            {
+              "name": "mood 1"
+              "musics": [
+                
+              ]
+            }
+          ]
+        },
+        {
+
+        }
+      ]
+    }
+  ]
+}

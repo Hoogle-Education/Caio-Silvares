@@ -62,8 +62,6 @@ animals.add(a1);
 animals.add(g1);
 var animal = animals.get(0);
 
-
-
 var position = animals.find(new Cat("garfield", 5, 1.3));
 
 List<Cat> cats = animals

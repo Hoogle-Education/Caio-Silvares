@@ -19,28 +19,41 @@ public class Main {
         User user4 = new User("user4", "user4@gmail.com", "p123", "android");
         User user5 = new User("user5", "user5@gmail.com", "p123", "ios");
 
-        App uber = new App("uber");
-        uber.setAndroidVersion(true);
-        uber.setIosVersion(true);
-        uber.setScore(4.2);
+        List<User> users = new ArrayList<>();
+        users.add(user1);
+        users.add(user2);
+        users.add(user3);
+        users.add(user4);
+        users.add(user5);
 
-        List<User> myUsers = new ArrayList<>();
-        myUsers.add(user3);
-        myUsers.add(user4);
-        myUsers.add(user5);
+        users.stream().forEach(u -> System.out.println(u));
+        System.out.println("------------------------");
+        var list = users.stream().filter(u -> u.getEmail() != null).toList();
+        list.forEach(e -> System.out.println(e));
+        System.out.println("------------------------");
+        var profiles = list
+                .stream()
+                .map(u -> new Profile(u.getUsername(), u.getEmail()))
+                .toList();
 
-        uber.addUser(user1);
-        uber.addUser(user2);
-        uber.addUsers(myUsers);
-        printUsersFrom(uber);
-
-        uber.removeUser(user3);
-        printUsersFrom(uber);
-        myUsers.stream().filter(Main::isAndroidUser).toList();
-        var allUsersHasEmail = myUsers.stream().allMatch(user -> user.getEmail() != null);
+        profiles.forEach(p -> System.out.println(p));
+        System.out.println("------------------------");
     }
 
     static boolean isAndroidUser(User user) {
         return user.getDeviceType().equals("andoird");
     }
 }
+
+// INTERFACES FUNCIONAL
+
+// Predicate (T -> boolean)
+// > validações
+// Predicate<Integer> checkIfIsGreaterThanTwo = (x) -> x > 2
+
+// Consumer (T -> void)
+// reproduzir alguma ação baseada no objeto
+// Consumer<Products> showProduct = (p) -> System.out.println(p)
+
+// Function (T -> R)
+// Function<String, Integer> conversor = (w) -> w.size();

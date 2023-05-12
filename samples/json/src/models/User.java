@@ -1,18 +1,20 @@
 package models;
 
+import models.annotations.JsonIgnore;
 import models.annotations.JsonKey;
 import models.annotations.Jsonable;
 import models.annotations.JsonParser;
 
 @Jsonable
 public class User {
-    @JsonKey(value = "email")
     private String email;
     @JsonKey(value = "name", composedKey = true, separator = " ")
     private String firstName;
-    @JsonKey(value = "lastName", composedKey = true)
+    @JsonKey(composedKey = true)
     private String lastName;
+    @JsonIgnore
     private Integer age;
+    @JsonIgnore
     private String password;
 
     public User(String email, String firstName, String lastName, Integer age, String password) {

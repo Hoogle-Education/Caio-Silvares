@@ -1,11 +1,13 @@
+import models.Car;
 import models.User;
 import utils.Log4Json;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        System.out.println("Hello world!");
         User user = new User("email@gmail.com", "John", "Wick", 42, "babayaga");
-        System.out.println(Log4Json.serialize(user));
+        Car car = new Car("XYZ3 - 45", "Maria", 2019, "111.222-345");
+        System.out.println(Log4Json.toJson(user));
+        System.out.println(Log4Json.toJson(car));
     }
 }
 

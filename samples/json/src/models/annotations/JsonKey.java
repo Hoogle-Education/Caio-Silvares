@@ -8,7 +8,10 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
 public @interface JsonKey {
+
     String value() default "";
+
     boolean composedKey() default false;
-    String separator() default " ";
+
+    String separator() default "";
 }

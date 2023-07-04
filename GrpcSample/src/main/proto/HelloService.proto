@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package com.grpc;
+option java_multiple_files = true;
+
+service Greeter {
+   rpc SayHello(Request) returns (Response);
+   rpc SayGoodMorning(Request) returns (Response);
+}
+
+message Request {
+   optional string name = 1;
+}
+
+message Response {
+   optional string greeting = 1;
+}

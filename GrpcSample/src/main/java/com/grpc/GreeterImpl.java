@@ -2,7 +2,7 @@ package com.grpc;
 
 import io.grpc.stub.StreamObserver;
 
-public class GreeterImpl extends Greeter {
+public class GreeterImpl extends GreeterGrpc.GreeterImplBase {
 
     @Override
     public void sayHello(Request request, StreamObserver<Response> responseObserver) {

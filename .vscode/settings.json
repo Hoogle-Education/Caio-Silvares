@@ -1,4 +1,5 @@
 {
   "java.project.sourcePaths": ["samples/Bytebank/src"],
-  "java.dependency.packagePresentation": "hierarchical"
+  "java.dependency.packagePresentation": "hierarchical",
+  "java.compile.nullAnalysis.mode": "automatic"
 }
